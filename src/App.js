@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React please CEN4010
+          bacon
         </a>
       </header>
     </div>
