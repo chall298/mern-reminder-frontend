@@ -1,4 +1,61 @@
-.App {
+.App-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.calendar-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.calendar-controls button {
+  padding: 5px 10px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.calendar {
+  width: 300px;
+  margin: 20px auto;
+}
+
+.calendar-header,
+.calendar-week {
+  display: flex;
+}
+
+.calendar-day-name,
+.calendar-day {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.calendar-day {
+  cursor: pointer;
+  transition: transform 0.1s ease-in-out;
+}
+
+.calendar-day:hover {
+  background-color: #eee;
+  transform: scale(1.1);
+}
+
+.calendar-day.empty {
+  background-color: #f9f9f9;
+  cursor: default;
+  border: none;
+}
+
+
+/* .App {
   text-align: center;
 }
 
@@ -36,3 +93,4 @@
     transform: rotate(360deg);
   }
 }
+*/
