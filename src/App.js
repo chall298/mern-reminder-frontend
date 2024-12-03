@@ -27,30 +27,76 @@ import './App.css';
 
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { AppBar, Toolbar, Button, Typography, Box, Container } from '@mui/material';
+import HomeIcon from '@mui/icons-material/Home';
+import AddIcon from '@mui/icons-material/Add';
 import ReminderList from './components/ReminderList';
 import ReminderForm from './components/ReminderForm';
 import EditReminder from './pages/EditReminder';
-
+//Logan MaterialUI feature
 const App = () => {
   return (
     <Router>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/add">Add Reminder</Link>
-          </li>
-        </ul>
-      </nav>
-      <h1>Reminder App</h1>
-      
-      <Routes>
-        <Route path="/" element={<ReminderList />} />
-        <Route path="/add" element={<ReminderForm />} />
-        <Route path="/edit/:id" element={<EditReminder />} />
-      </Routes>
+     {/*Backdrop*/}
+     {/* <Box sx = {{ minHeight: "100vh", bgcolor: "lightblue", display: "flex", flexDirection: "column"}}></Box> */}
+      {/*Nav Bar*/}
+      <AppBar position = "static" sx={{ bgcolor: "primary.main"}}>
+        <Toolbar>
+          <Typography variant = "h6" sx = {{ flexGrow: 1}}>
+            Reminder App
+          </Typography>
+          <Button
+            startIcon = {<HomeIcon />}
+            component={Link}
+            to="/"
+            color="inherit"
+            sx={{ textTransform: "none" }}
+          >
+            Home
+          </Button>
+          <Button
+            startIcon = {<AddIcon />}
+            component={Link}
+            to="/add"
+            color="inherit"
+            sx={{ textTransform: "none"}}
+          >
+            Add Reminder
+          </Button>
+        </Toolbar>
+      </AppBar>
+
+      {/*Main content*/}
+      <Container sx={{ py: 4, flex: 1}}>
+        <Routes>
+          <Route path="/" element={<ReminderList />} />
+          <Route path="/add" element={<ReminderForm />} />
+          <Route path="/edit/:id" element={<EditReminder />} />
+          <Route
+            path="*"
+            element = {
+              <Typography variant = "h6" align="center">
+                404: Page Not Found
+              </Typography>
+            }
+            />
+        </Routes>
+      </Container>
+
+      {/*Footer*/}
+      <Box
+        component="footer"
+        sx = {{
+          bgcolor: "primary.main",
+          color: "white",
+          py: 2,
+          textAlign: "center"
+        }}
+      >
+        <Typography variant="body2">
+          &copy; {new Date().getFullYear()} CEN4010 Reminder App. All rights reserved.
+        </Typography>
+      </Box>
     </Router>
     
   );
